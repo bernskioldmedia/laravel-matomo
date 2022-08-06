@@ -18,7 +18,7 @@ abstract class BaseResource
     ) {
     }
 
-    public function get(string $functionName, array $params = []): object
+    public function get(string $functionName, array $params = []): object|array
     {
         return $this->client
             ->cache($this->cache)

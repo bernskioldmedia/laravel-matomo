@@ -37,7 +37,7 @@ class MatomoClient
         return $this->baseUrl($url)->apiKey($apiKey);
     }
 
-    public function get(array $query = []): object
+    public function get(array $query = []): object|array
     {
         if (empty($this->baseUrl)) {
             throw InvalidConfiguration::emptyBaseUrl();
