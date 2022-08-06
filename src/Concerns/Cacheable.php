@@ -5,6 +5,7 @@ namespace BernskioldMedia\LaravelMatomo\Concerns;
 trait Cacheable
 {
     protected int $cacheDurationInSeconds = 60;
+
     protected bool $cache = true;
 
     public function cache(bool $cache = true): self
