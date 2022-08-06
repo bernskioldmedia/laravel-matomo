@@ -3,6 +3,7 @@
 namespace BernskioldMedia\LaravelMatomo\Resources;
 
 use BernskioldMedia\LaravelMatomo\Concerns\Cacheable;
+use BernskioldMedia\LaravelMatomo\Concerns\SelectsAmount;
 use BernskioldMedia\LaravelMatomo\MatomoClient;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Traits\Tappable;
@@ -11,7 +12,8 @@ abstract class BaseResource
 {
     use Tappable,
         Cacheable,
-        Macroable;
+        Macroable,
+        SelectsAmount;
 
     public function __construct(
         public MatomoClient $client
