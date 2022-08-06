@@ -12,54 +12,54 @@ class VisitsSummary extends BaseResource
         SelectsPeriod,
         SelectsDate;
 
-    public function all(): object
+    public function all(): object|array
     {
         return $this->get('get');
     }
 
-    public function visits(): int
+    public function visits(): object|array
     {
-        return $this->get('getVisits')?->value ?? 0;
+        return $this->get('getVisits');
     }
 
-    public function uniqueVisitors(): int
+    public function uniqueVisitors(): object|array
     {
-        return $this->get('getUniqueVisitors')?->value ?? 0;
+        return $this->get('getUniqueVisitors');
     }
 
-    public function users(): int
+    public function users(): object|array
     {
-        return $this->get('getUsers')?->value ?? 0;
+        return $this->get('getUsers');
     }
 
-    public function actions(): int
+    public function actions(): object|array
     {
-        return $this->get('getActions')?->value ?? 0;
+        return $this->get('getActions');
     }
 
-    public function maxActions(): int
+    public function maxActions(): object|array
     {
-        return $this->get('getMaxActions')?->value ?? 0;
+        return $this->get('getMaxActions');
     }
 
-    public function bounceCount(): int
+    public function bounceCount(): object|array
     {
-        return $this->get('getBounceCount')?->value ?? 0;
+        return $this->get('getBounceCount');
     }
 
-    public function visitsConverted(): int
+    public function visitsConverted(): object|array
     {
-        return $this->get('getVisitsConverted')?->value ?? 0;
+        return $this->get('getVisitsConverted');
     }
 
-    public function secondsOnSite(): int
+    public function secondsOnSite(): object|array
     {
-        return $this->get('getSumVisitsLength')?->value ?? 0;
+        return $this->get('getSumVisitsLength');
     }
 
-    public function visitDuration(): string
+    public function visitDuration(): object|array
     {
-        return $this->get('getSumVisitsLengthPretty')?->value ?? '';
+        return $this->get('getSumVisitsLengthPretty');
     }
 
     protected function moduleName(): string
