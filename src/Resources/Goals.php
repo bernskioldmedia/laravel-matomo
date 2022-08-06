@@ -49,6 +49,6 @@ class Goals extends BaseResource
 
     protected function moduleName(): string
     {
-        return 'Live';
+        return 'Goals';
     }
 }
