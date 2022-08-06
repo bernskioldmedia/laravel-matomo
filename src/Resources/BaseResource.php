@@ -14,9 +14,12 @@ abstract class BaseResource
     ) {
     }
 
-    public function get(string $functionName): object
+    public function get(string $functionName, array $params = []): object
     {
-        return $this->client->get($this->buildQuery($functionName));
+        return $this->client->get(array_merge(
+            $this->buildQuery($functionName),
+            $params
+        ));
     }
 
     public function instance(string $url, string $apiKey): static
