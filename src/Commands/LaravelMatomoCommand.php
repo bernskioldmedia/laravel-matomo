@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace BernskioldMedia\LaravelMatomo\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelMatomoCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-matomo';
 
     public $description = 'My command';
 
