@@ -12,9 +12,15 @@ class Goals extends BaseResource
         SelectsPeriod,
         SelectsDate;
 
-    public function summary(): object|array
+    public function summary(?int $goalId = null): object|array
     {
-        return $this->get('get');
+        $query = [];
+
+        if ($goalId) {
+            $query['idGoal'] = $goalId;
+        }
+
+        return $this->get('get', $query);
     }
 
     public function all(): object|array
