@@ -2,6 +2,7 @@
 
 namespace BernskioldMedia\LaravelMatomo;
 
+use BernskioldMedia\LaravelMatomo\Exceptions\InvalidConfiguration;
 use BernskioldMedia\LaravelMatomo\Exceptions\MatomoException;
 use Illuminate\Support\Facades\Http;
 
@@ -34,6 +35,10 @@ class MatomoClient
 
     public function get(array $query = []): object
     {
+        if (empty($this->baseUrl)) {
+            throw InvalidConfiguration::emptyBaseUrl();
+        }
+
         $response = Http::baseUrl($this->baseUrl)
             ->get('/', $this->query($query))
             ->throw()
@@ -53,6 +58,10 @@ class MatomoClient
 
     protected function baseApiQuery(): array
     {
+        if (empty($this->apiKey)) {
+            throw InvalidConfiguration::noApiKey();
+        }
+
         return [
             'module' => 'API',
             'format' => 'JSON',
