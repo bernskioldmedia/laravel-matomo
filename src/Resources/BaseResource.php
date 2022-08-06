@@ -57,5 +57,4 @@ abstract class BaseResource
 
         return array_merge($query, $this->query());
     }
-
 }

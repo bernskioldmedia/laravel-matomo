@@ -4,7 +4,6 @@ namespace BernskioldMedia\LaravelMatomo\Concerns;
 
 trait SelectsPeriod
 {
-
     public string $period = 'day';
 
     public function day(): static
@@ -33,5 +32,4 @@ trait SelectsPeriod
 
         return $this;
     }
-
 }

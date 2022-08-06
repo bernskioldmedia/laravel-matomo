@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Http;
 
 class MatomoClient
 {
-
     public function __construct(
         private string $apiKey,
         private string $baseUrl
@@ -49,7 +48,7 @@ class MatomoClient
 
     public static function fromConfig(array $config): static
     {
-        return (new static($config['api_key'], $config['base_url']));
+        return new static($config['api_key'], $config['base_url']);
     }
 
     protected function baseApiQuery(): array
@@ -65,5 +64,4 @@ class MatomoClient
     {
         return array_merge($this->baseApiQuery(), $query);
     }
-
 }
