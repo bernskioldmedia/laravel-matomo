@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BernskioldMedia\\LaravelMatomo\\": "src",
-            "BernskioldMedia\\LaravelMatomo\\Database\\Factories\\": "database/factories"
+            "BernskioldMedia\\LaravelMatomo\\": "src"
         }
     },
     "autoload-dev": {
