@@ -33,7 +33,7 @@ class Events extends BaseResource
     {
         $query = [];
 
-        if (!empty($this->secondaryDimension)) {
+        if (! empty($this->secondaryDimension)) {
             $query['secondaryDimension'] = $this->secondaryDimension;
             $query['flat'] = $this->flat;
         }
