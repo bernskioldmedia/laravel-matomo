@@ -2,9 +2,9 @@
 
 namespace BernskioldMedia\LaravelMatomo;
 
+use BernskioldMedia\LaravelMatomo\Commands\LaravelMatomoCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use BernskioldMedia\LaravelMatomo\Commands\LaravelMatomoCommand;
 
 class LaravelMatomoServiceProvider extends PackageServiceProvider
 {
