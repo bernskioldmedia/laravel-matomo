@@ -2,9 +2,9 @@
 
 namespace BernskioldMedia\LaravelMatomo\Tests;
 
+use BernskioldMedia\LaravelMatomo\LaravelMatomoServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use BernskioldMedia\LaravelMatomo\LaravelMatomoServiceProvider;
 
 class TestCase extends Orchestra
 {
