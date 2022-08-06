@@ -57,7 +57,7 @@
                 "BernskioldMedia\\LaravelMatomo\\LaravelMatomoServiceProvider"
             ],
             "aliases": {
-                "LaravelMatomo": "BernskioldMedia\\LaravelMatomo\\Facades\\LaravelMatomo"
+                "LaravelMatomo": "Matomo"
             }
         }
     },
