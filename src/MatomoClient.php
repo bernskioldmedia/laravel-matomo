@@ -2,6 +2,7 @@
 
 namespace BernskioldMedia\LaravelMatomo;
 
+use BernskioldMedia\LaravelMatomo\Exceptions\MatomoException;
 use Illuminate\Support\Facades\Http;
 
 class MatomoClient
@@ -34,10 +35,16 @@ class MatomoClient
 
     public function get(array $query = []): object
     {
-        return Http::baseUrl($this->baseUrl)
+        $response = Http::baseUrl($this->baseUrl)
             ->get('/', $this->query($query))
             ->throw()
             ->object();
+
+        if (isset($response->result) && $response->result === 'error') {
+            throw MatomoException::requestError($response->message ?? '');
+        }
+
+        return $response;
     }
 
     public static function fromConfig(array $config): static
