@@ -5,6 +5,7 @@ namespace BernskioldMedia\LaravelMatomo\Concerns;
 trait SelectsSecondaryDimension
 {
     public string $secondaryDimension = '';
+
     public string $flat = '';
 
     public function secondaryDimension(string $secondaryDimension): static
