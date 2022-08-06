@@ -4,6 +4,7 @@ namespace BernskioldMedia\LaravelMatomo\Resources;
 
 use BernskioldMedia\LaravelMatomo\Concerns\Cacheable;
 use BernskioldMedia\LaravelMatomo\Concerns\SelectsAmount;
+use BernskioldMedia\LaravelMatomo\Concerns\Sortable;
 use BernskioldMedia\LaravelMatomo\MatomoClient;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Traits\Tappable;
@@ -13,7 +14,8 @@ abstract class BaseResource
     use Tappable,
         Cacheable,
         Macroable,
-        SelectsAmount;
+        SelectsAmount,
+        Sortable;
 
     public function __construct(
         public MatomoClient $client
@@ -65,6 +67,14 @@ abstract class BaseResource
 
         if (property_exists($this, 'amount')) {
             $query['filter_limit'] = $this->amount;
+        }
+
+        if (property_exists($this, 'sortColumn') && $this->sortColumn) {
+            $query['filter_sort_column'] = $this->sortColumn;
+        }
+
+        if (property_exists($this, 'sortOrder')) {
+            $query['filter_sort_order'] = $this->sortOrder;
         }
 
         return array_merge($query, $this->query());
