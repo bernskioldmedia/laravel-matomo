@@ -2,12 +2,16 @@
 
 namespace BernskioldMedia\LaravelMatomo;
 
+use BernskioldMedia\LaravelMatomo\Concerns\Cacheable;
 use BernskioldMedia\LaravelMatomo\Exceptions\InvalidConfiguration;
 use BernskioldMedia\LaravelMatomo\Exceptions\MatomoException;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class MatomoClient
 {
+    use Cacheable;
+
     public function __construct(
         private string $apiKey,
         private string $baseUrl
@@ -39,10 +43,23 @@ class MatomoClient
             throw InvalidConfiguration::emptyBaseUrl();
         }
 
-        $response = Http::baseUrl($this->baseUrl)
-            ->get('/', $this->query($query))
-            ->throw()
-            ->object();
+        $query = $this->query($query);
+        $cacheKey = md5(json_encode([
+            'url' => $this->baseUrl,
+            'key' => $this->apiKey,
+            'query' => $query,
+        ]));
+
+        if ($this->cache === false) {
+            Cache::forget($cacheKey);
+        }
+
+        $response = Cache::remember($cacheKey, $this->cacheDurationInSeconds, function () use ($query) {
+            return Http::baseUrl($this->baseUrl)
+                ->get('/', $query)
+                ->throw()
+                ->object();
+        });
 
         if (isset($response->result) && $response->result === 'error') {
             throw MatomoException::requestError($response->message ?? '');

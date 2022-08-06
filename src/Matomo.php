@@ -18,9 +18,14 @@ use BernskioldMedia\LaravelMatomo\Resources\VisitFrequency;
 use BernskioldMedia\LaravelMatomo\Resources\VisitorInterest;
 use BernskioldMedia\LaravelMatomo\Resources\VisitsSummary;
 use BernskioldMedia\LaravelMatomo\Resources\VisitTime;
+use Illuminate\Support\Traits\Macroable;
+use Illuminate\Support\Traits\Tappable;
 
 class Matomo
 {
+    use Macroable,
+        Tappable;
+
     public function __construct(
         public MatomoClient $client
     ) {

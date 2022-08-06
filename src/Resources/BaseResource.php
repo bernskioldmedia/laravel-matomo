@@ -2,12 +2,16 @@
 
 namespace BernskioldMedia\LaravelMatomo\Resources;
 
+use BernskioldMedia\LaravelMatomo\Concerns\Cacheable;
 use BernskioldMedia\LaravelMatomo\MatomoClient;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Traits\Tappable;
 
 abstract class BaseResource
 {
-    use Tappable;
+    use Tappable,
+        Cacheable,
+        Macroable;
 
     public function __construct(
         public MatomoClient $client
@@ -16,10 +20,13 @@ abstract class BaseResource
 
     public function get(string $functionName, array $params = []): object
     {
-        return $this->client->get(array_merge(
-            $this->buildQuery($functionName),
-            $params
-        ));
+        return $this->client
+            ->cache($this->cache)
+            ->cacheForSeconds($this->cacheDurationInSeconds)
+            ->get(array_merge(
+                $this->buildQuery($functionName),
+                $params
+            ));
     }
 
     public function instance(string $url, string $apiKey): static
