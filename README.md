@@ -25,14 +25,38 @@ This is the contents of the published config file:
 
 ```php
 return [
+
+    /**
+     * This is the Matomo API key that allows you to work
+     * with the API.
+     */
+    'api_key' => env('MATOMO_API_KEY'),
+
+    /**
+     * This is the URL of the Matomo installation that you want
+     * to use the package with.
+     */
+    'base_url' => env('MATOMO_BASE_URL'),
+
 ];
 ```
 
 ## Usage
 
+A select number of the [Matomo APIs](https://developer.matomo.org/api-reference/reporting-api) are available, with more
+to be added as we have a need for them.
+
+Each API has its own resource, with the methods available as nicely named methods. All are accessible via the provided
+Facade. See the examples below.
+
+For the full list of methods, please refer, currently, to the source code,
+
 ```php
-$laravelMatomo = new BernskioldMedia\LaravelMatomo();
-echo $laravelMatomo->echoPhrase('Hello, BernskioldMedia!');
+use \BernskioldMedia\LaravelMatomo\Facades\Matomo;
+
+// get a summary object of metrics for the site with the ID 1.
+$summary = Matomo::summary()->site(1)->all();
+
 ```
 
 ## Testing
