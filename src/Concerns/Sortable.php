@@ -5,6 +5,7 @@ namespace BernskioldMedia\LaravelMatomo\Concerns;
 trait Sortable
 {
     protected string $sortOrder = 'asc';
+
     protected ?string $sortColumn = null;
 
     public function sortBy(string $column, $order = 'asc'): static
