@@ -102,6 +102,6 @@ class Actions extends BaseResource
 
     protected function moduleName(): string
     {
-        return 'Contents';
+        return 'Actions';
     }
 }
