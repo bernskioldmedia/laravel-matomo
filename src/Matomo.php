@@ -6,7 +6,6 @@ use BernskioldMedia\LaravelMatomo\Resources\VisitsSummary;
 
 class Matomo
 {
-
     public function __construct(
         public MatomoClient $client
     ) {
@@ -16,5 +15,4 @@ class Matomo
     {
         return new VisitsSummary($this->client);
     }
-
 }

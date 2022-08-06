@@ -6,7 +6,6 @@ use DateTimeInterface;
 
 trait SelectsDate
 {
-
     public string $date = 'today';
 
     public function date(string $date): static
@@ -53,15 +52,14 @@ trait SelectsDate
 
     public function between(DateTimeInterface|string $from, DateTimeInterface|string $to): static
     {
-        if (!is_string($from)) {
+        if (! is_string($from)) {
             $from = $from->format('Y-m-d');
         }
 
-        if (!is_string($to)) {
+        if (! is_string($to)) {
             $to = $to->format('Y-m-d');
         }
 
         return $this->date("$from,$to");
     }
-
 }
