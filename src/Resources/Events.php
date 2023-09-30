@@ -9,10 +9,10 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class Events extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate,
-        SelectsSecondaryDimension;
+        SelectsSecondaryDimension,
+        SelectsSites;
 
     public function categories(): object|array
     {

@@ -8,11 +8,11 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class Goals extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
-    public function summary(?int $goalId = null): object|array
+    public function summary(int $goalId = null): object|array
     {
         $query = [];
 

@@ -12,9 +12,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
  */
 class VisitTime extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function byLocalTime(): object|array
     {

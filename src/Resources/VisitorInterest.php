@@ -12,9 +12,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
  */
 class VisitorInterest extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function numberOfVisitsPerDuration(): object|array
     {

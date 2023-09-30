@@ -8,9 +8,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class Live extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function counters(int $lastMinutes = 30): object|array
     {
@@ -19,7 +19,7 @@ class Live extends BaseResource
         ]);
     }
 
-    public function lastVisits(?int $amount = null): object|array
+    public function lastVisits(int $amount = null): object|array
     {
         $query = [];
 

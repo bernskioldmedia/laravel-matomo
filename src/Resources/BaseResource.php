@@ -11,11 +11,11 @@ use Illuminate\Support\Traits\Tappable;
 
 abstract class BaseResource
 {
-    use Tappable,
-        Cacheable,
+    use Cacheable,
         Macroable,
         SelectsAmount,
-        Sortable;
+        Sortable,
+        Tappable;
 
     public function __construct(
         public MatomoClient $client

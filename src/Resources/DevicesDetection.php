@@ -8,9 +8,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class DevicesDetection extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function types(): object|array
     {

@@ -8,9 +8,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class MarketingCampaignsReporting extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function id(): object|array
     {

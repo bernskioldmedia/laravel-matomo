@@ -8,9 +8,9 @@ use BernskioldMedia\LaravelMatomo\Concerns\SelectsSites;
 
 class Contents extends BaseResource
 {
-    use SelectsSites,
+    use SelectsDate,
         SelectsPeriod,
-        SelectsDate;
+        SelectsSites;
 
     public function names(): object|array
     {
